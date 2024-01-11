@@ -9,59 +9,102 @@
 </head>
 
 <body>
+    <a href="loading.html">
+        < </a>
 
-    <div class="container">
-        <div class="logo">
-            <img src="./imgs/gomindzacademyNoname.png" alt="gomindzacademy" id="logo">
-        </div>
-
-        <div class="form-container">
-            <form id="loginForm" class="form" onsubmit="return validateForm()">
-                <h1>Login</h1>
-                <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
+            <div class="container">
+                <div class="logo">
+                    <img src="./imgs/gomindzacademyNoname.png" alt="gomindzacademy" id="logo">
                 </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <div class="password-container">
-                        <input type="password" id="password" name="password" required>
-                        <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
-                    </div>
+
+                <div class="form-container">
+                    <form id="loginForm" class="form" onsubmit="return validateForm()">
+                        <h1>Login</h1>
+                        <div class="input-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <div class="password-container">
+                                <input type="password" id="password" name="password" required>
+                                <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
+                            </div>
+                        </div>
+                        <button type="submit">Login</button>
+                        <div id="error-message" class="error-message"></div>
+                    </form>
+
                 </div>
-                <button type="submit">Login</button>
-            </form>
-            <div id="error-message" class="error-message"></div>
 
-        </div>
+            </div>
 
-    </div>
+            <script>
+                var attempts = 3; // Number of login attempts allowed
+                var lockedOut = false; // Flag to track if the user is locked out
 
-    <script>
-        function validateForm() {
-            var usernameInput = document.getElementById("username").value;
-            var passwordInput = document.getElementById("password").value;
+                function validateForm() {
+                    if (lockedOut) {
+                        displayError("Account locked. Please try again later.");
+                        return false;
+                    }
 
-            // Add client-side validation logic here
-            // For example, check minimum password length, email format, etc.
+                    var usernameInput = document.getElementById("username").value;
+                    var passwordInput = document.getElementById("password").value;
 
-            return true; // Return false to prevent form submission if validation fails
-        }
+                    // Implement server-side validation and authentication here
+                    // For now, we'll simulate a check with hardcoded values
+                    var correctUsername = "user";
+                    var correctPassword = "password";
 
-        function togglePasswordVisibility() {
-            var passwordInput = document.getElementById("password");
-            var toggleSpan = document.querySelector(".toggle-password");
+                    if (usernameInput === correctUsername && passwordInput === correctPassword) {
+                        // Successful login
+                        displaySuccess("Login successful! Redirecting...");
+                        // Add logic to redirect to another page or perform additional actions
+                        return true;
+                    } else {
+                        // Failed login attempt
+                        attempts--;
 
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                toggleSpan.textContent = "Hide";
-            } else {
-                passwordInput.type = "password";
-                toggleSpan.textContent = "Show";
-            }
-        }
-    </script>
+                        if (attempts === 0) {
+                            lockoutUser();
+                        } else {
+                            displayError("Invalid username or password. Attempts left: " + attempts);
+                        }
 
+                        return false;
+                    }
+                }
+
+                function displayError(message) {
+                    var errorMessageContainer = document.getElementById("error-message");
+                    errorMessageContainer.innerHTML = "<div class='error'>" + message + "</div>";
+                }
+
+                function displaySuccess(message) {
+                    var errorMessageContainer = document.getElementById("error-message");
+                    errorMessageContainer.innerHTML = "<div class='success'>" + message + "</div>";
+                }
+
+                function togglePasswordVisibility() {
+                    var passwordInput = document.getElementById("password");
+                    var toggleSpan = document.querySelector(".toggle-password");
+
+                    if (passwordInput.type === "password") {
+                        passwordInput.type = "text";
+                        toggleSpan.textContent = "Hide"; // Eye open emoji
+                    } else {
+                        passwordInput.type = "password";
+                        toggleSpan.textContent = "Show"; // Eye closed emoji
+                    }
+                }
+
+                function lockoutUser() {
+                    lockedOut = true;
+                    displayError("Account locked. Please try again later.");
+                    // You might want to implement a mechanism to unlock the account after a certain period
+                }
+            </script>
 
 </body>
 
