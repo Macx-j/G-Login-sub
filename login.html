@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="./imgs/gomindzacademyNoname.png" alt="gomindzacademy" id="logo">
+        </div>
+
+        <div class="form-container">
+            <form id="loginForm" class="form" onsubmit="return validateForm()">
+                <h1>Login</h1>
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required>
+                        <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
+                    </div>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div id="error-message" class="error-message"></div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function validateForm() {
+            var usernameInput = document.getElementById("username").value;
+            var passwordInput = document.getElementById("password").value;
+
+            // Add client-side validation logic here
+            // For example, check minimum password length, email format, etc.
+
+            return true; // Return false to prevent form submission if validation fails
+        }
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            var toggleSpan = document.querySelector(".toggle-password");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleSpan.textContent = "Hide";
+            } else {
+                passwordInput.type = "password";
+                toggleSpan.textContent = "Show";
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
