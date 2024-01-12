@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
+    <script src="login.js" defer></script>
 </head>
 
 <body>
@@ -31,80 +32,15 @@
                                 <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
                             </div>
                         </div>
-                        <button type="submit">Login</button>
+                        <button type="submit">LOG IN</button>
                         <div id="error-message" class="error-message"></div>
                     </form>
+                    <div id="countdown" class="countdown-container"></div>
+
 
                 </div>
 
             </div>
-
-            <script>
-                var attempts = 3; // Number of login attempts allowed
-                var lockedOut = false; // Flag to track if the user is locked out
-
-                function validateForm() {
-                    if (lockedOut) {
-                        displayError("Account locked. Please try again later.");
-                        return false;
-                    }
-
-                    var usernameInput = document.getElementById("username").value;
-                    var passwordInput = document.getElementById("password").value;
-
-                    // Implement server-side validation and authentication here
-                    // For now, we'll simulate a check with hardcoded values
-                    var correctUsername = "user";
-                    var correctPassword = "password";
-
-                    if (usernameInput === correctUsername && passwordInput === correctPassword) {
-                        // Successful login
-                        displaySuccess("Login successful! Redirecting...");
-                        // Add logic to redirect to another page or perform additional actions
-                        return true;
-                    } else {
-                        // Failed login attempt
-                        attempts--;
-
-                        if (attempts === 0) {
-                            lockoutUser();
-                        } else {
-                            displayError("Invalid username or password. Attempts left: " + attempts);
-                        }
-
-                        return false;
-                    }
-                }
-
-                function displayError(message) {
-                    var errorMessageContainer = document.getElementById("error-message");
-                    errorMessageContainer.innerHTML = "<div class='error'>" + message + "</div>";
-                }
-
-                function displaySuccess(message) {
-                    var errorMessageContainer = document.getElementById("error-message");
-                    errorMessageContainer.innerHTML = "<div class='success'>" + message + "</div>";
-                }
-
-                function togglePasswordVisibility() {
-                    var passwordInput = document.getElementById("password");
-                    var toggleSpan = document.querySelector(".toggle-password");
-
-                    if (passwordInput.type === "password") {
-                        passwordInput.type = "text";
-                        toggleSpan.textContent = "Hide"; // Eye open emoji
-                    } else {
-                        passwordInput.type = "password";
-                        toggleSpan.textContent = "Show"; // Eye closed emoji
-                    }
-                }
-
-                function lockoutUser() {
-                    lockedOut = true;
-                    displayError("Account locked. Please try again later.");
-                    // You might want to implement a mechanism to unlock the account after a certain period
-                }
-            </script>
 
 </body>
 
