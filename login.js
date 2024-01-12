@@ -1,7 +1,7 @@
 function validateForm() {
-  var usernameInput = document.getElementById("username").value;
-  var passwordInput = document.getElementById("password").value;
-  var errorMessageContainer = document.getElementById("error-message");
+  const usernameInput = document.getElementById("username").value;
+  const passwordInput = document.getElementById("password").value;
+  const errorMessageContainer = document.getElementById("error-message");
 
   // Basic client-side validation
   if (!usernameInput || !passwordInput) {
@@ -18,8 +18,8 @@ function validateForm() {
 }
 
 function togglePasswordVisibility() {
-  var passwordInput = document.getElementById("password");
-  var toggleSpan = document.querySelector(".toggle-password");
+  const passwordInput = document.getElementById("password");
+  const toggleSpan = document.querySelector(".toggle-password");
 
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
