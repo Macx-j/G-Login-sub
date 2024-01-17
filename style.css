@@ -66,13 +66,13 @@ a {
     padding: 10px 20px;
     text-decoration: none;
     color: white;
-    background-color: #0837b6;
+    background-color: rgb(13, 78, 116);
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 a:hover {
-    background-color: #0f421c;
+    background-color: #1b8b1b;
 }
 
 .logo {
