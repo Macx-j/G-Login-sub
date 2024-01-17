@@ -9,21 +9,19 @@ body {
     align-items: center;
     height: 100vh;
     /* Remove background color */
-    background: rgb(13, 78, 116);
-    /*background: url('') center/cover fixed;
-    /* Set the initial background image */
-
-}
-
-body {
+    background: rgb(123, 159, 179);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    background: repeating-linear-gradient(90deg,
+            #9497aa,
+            #3c478a 20px,
+            #a8adc7 10px,
+            #243ed3 20px);
 }
 
-/* Add some styling to position the link below the h1 */
 h1#typing-text {
     text-align: center;
     /* Center the heading */
@@ -31,11 +29,8 @@ h1#typing-text {
 
 a.login-link {
     display: block;
-    /* Display the link as a block element */
     text-align: center;
-    /* Center the link text */
     margin-top: 200px;
-    /* Add margin to separate it from the heading */
 }
 
 /* Add styling to position the link below the h1 and keep it fixed */
@@ -66,7 +61,7 @@ a {
     padding: 10px 20px;
     text-decoration: none;
     color: white;
-    background-color: rgb(13, 78, 116);
+    background-color: rgb(200, 209, 214);
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
@@ -140,12 +135,10 @@ a:hover {
 
 .input-group label {
     margin-bottom: 8px;
-    /* Adjust this value as needed */
 }
 
 .input-group input {
     margin-top: 8px;
-    /* Adjust this value as needed */
 }
 
 
@@ -165,14 +158,12 @@ input[type="password"] {
 
 #password {
     padding-right: 10px;
-    /* Adjust the padding to ensure space for the "Show" span */
 }
 
 .toggle-password {
     position: absolute;
     top: 60%;
     right: 15px;
-    /* Adjust the right position as needed */
     transform: translateY(-50%);
     cursor: pointer;
     color: #05356d;
