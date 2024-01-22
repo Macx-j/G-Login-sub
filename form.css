@@ -1,65 +1,36 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f1f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .container {
-    background-color: #fff;
-    padding: 100px;
-    border-radius: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-    margin-top: 20px;
-}
-
-form {
-    text-align: left;
-}
-
-label {
+    border-radius: 5px;
+    background-color: rgb(67, 113, 139);
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
-    margin-bottom: 8px;
-    color: #555;
+
 }
 
-input,
-select,
-button {
+input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 7px;
+    border: 1px solid rgb(102, 92, 92);
+    border-radius: 1px;
     box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    resize: vertical;
 }
 
-.courses {
-    display: flex;
-    margin-bottom: 16px;
+
+table,
+td,
+th {
+    border: 1px solid rgb(0, 0, 0);
 }
 
-.courses input {
-    margin-right: 20px;
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
-button {
-    background-color: #20a2ac;
-    padding: 4px;
-    color: #fff;
-}
-
-#successMessage {
-    display: none;
+th {
+    height: 60px;
 }
