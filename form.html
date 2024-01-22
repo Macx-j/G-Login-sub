@@ -3,124 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ed Tech Academy Registration</title>
+    <title>DATA</title>
     <link rel="stylesheet" href="form.css">
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>Ed Tech Academy Registration</h1>
-        <form id="registrationForm">
+    <div class="container" id="formContainer">
 
-            <label for="courses">Select Courses:</label>
-            <div class="courses">
-                <input type="checkbox" name="course" value="course1"> Course 1
-                <input type="checkbox" name="course" value="course2"> Course 2
-                <!-- Add more courses as needed -->
-            </div>
-
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstNameInput" name="firstName" required>
-
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastNameInput" name="lastName" required>
-
-            <label for="gender">Gender:</label>
-            <select id="genderInput" name="gender" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
-
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dobInput" name="dob" required>
-
-            <label for="contact">Contact Number:</label>
-            <input type="tel" id="contactInput" name="contact" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="emailInput" name="email" required>
-
-            <!-- Additional Fields -->
-            <label for="qualifications">Qualifications:</label>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="qualification" value="highschool"> High School</label>
-                <label><input type="checkbox" name="qualification" value="college"> College</label>
-                <!-- Add more qualifications as needed -->
-            </div>
-
-            <label for="schoolAlumni">School Alumni:</label>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="schoolAlumni" value="yes"> Yes</label>
-                <label><input type="checkbox" name="schoolAlumni" value="no"> No</label>
-            </div>
-
-            <label for="nationality">Nationality:</label>
-            <input type="text" id="nationalityInput" name="nationality" required>
-
-            <label for="intake">Intake:</label>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="intake" value="intake1"> Intake 1</label>
-                <label><input type="checkbox" name="intake" value="intake2"> Intake 2</label>
-                <!-- Add more intakes as needed -->
-            </div>
-
-            <label for="howDidYouHear">How Did You Hear About Us:</label>
-            <div class="radio-group">
-                <label><input type="radio" name="howDidYouHear" value="online"> Online</label>
-                <label><input type="radio" name="howDidYouHear" value="offline"> Offline</label>
-                <label><input type="radio" name="howDidYouHear" value="wordOfMouth"> Word of Mouth</label>
-            </div>
-
-            <label for="address">Address:</label>
-            <textarea id="addressInput" name="address" required></textarea>
-
-            <label for="emergencyContacts">Emergency Contacts:</label>
-            <textarea id="emergencyContactsInput" name="emergencyContacts" required></textarea>
-
-            <label for="itSkills">IT Skills:</label>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="itSkills" value="beginner"> Beginner</label>
-                <label><input type="checkbox" name="itSkills" value="average"> Average</label>
-                <label><input type="checkbox" name="itSkills" value="satisfactory"> Satisfactory</label>
-            </div>
-
-            <label for="status">Status:</label>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="status" value="working"> Working</label>
-                <label><input type="checkbox" name="status" value="studying"> Studying</label>
-            </div>
-
-            <label for="tshirt">T-Shirt Size:</label>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="tshirt" value="small"> Small</label>
-                <label><input type="checkbox" name="tshirt" value="medium"> Medium</label>
-                <label><input type="checkbox" name="tshirt" value="large"> Large</label>
-                <label><input type="checkbox" name="tshirt" value="xl"> XL</label>
-            </div>
-
-            <label for="diagnosedConditions">Are you Diagnosed with any of the following:</label>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="diagnosedConditions" value="condition1"> Condition 1</label>
-                <label><input type="checkbox" name="diagnosedConditions" value="condition2"> Condition 2</label>
-                <!-- Add more conditions as needed -->
-            </div>
-
-            <button type="submit">Submit</button>
-        </form>
-
-        <div id="successMessage">
-            Registration successful! Your data has been stored.
-        </div>
-
-        <div id="exportContainer" class="hidden">
-            <button onclick="exportToCSV()">Export to Excel</button>
-        </div>
+        <!-- Add more labels and inputs as needed -->
     </div>
 
-    <script src="form.js"></script>
+    <table id="show">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>DOB</th>
+
+        </tr>
+    </table>
+
+    <script src="./scripts/form.js"></script>
 </body>
 
 </html>
