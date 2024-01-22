@@ -1,131 +1,33 @@
-let attempts = 3;
-let lockedOut = false;
-let lockoutDuration = 15 * 60 * 1000;
-
 function validateForm() {
-  if (lockedOut) {
-    displayError("Account locked. Please try again later.");
-    return false;
-  }
+  // Your validation logic here
 
-  const usernameInput = document.getElementById("username").value;
-  const passwordInput = document.getElementById("password").value;
-
-  const correctUsername = "Moha";
-  const correctPassword = "AdminMack";
-
-  if (usernameInput === correctUsername && passwordInput === correctPassword) {
-    displaySuccess("Login successful! Redirecting...");
-    return true;
+  // Assuming the validation is successful
+  if (specificUsernameAndPasswordEntered()) {
+    redirectToFormPage();
   } else {
-    attempts--;
-
-    if (attempts === 0) {
-      lockoutUser();
-    } else {
-      displayError(`Invalid username or password. Attempts left: ${attempts}`);
-    }
-
-    return false;
-  }
-}
-
-function displayError(message) {
-  const errorMessageContainer = document.getElementById("error-message");
-  errorMessageContainer.innerHTML = `<div class='error'>${message}</div>`;
-
-  if (lockedOut) {
-    disableInputs();
-    startCountdown();
+    displayErrorMessage("Invalid username or password.");
   }
 
-  saveStateToLocalStorage();
+  return false; // Prevents the form from submitting
 }
 
-function displaySuccess(message) {
-  const errorMessageContainer = document.getElementById("error-message");
-  errorMessageContainer.innerHTML = `<div class='success'>${message}</div>`;
+function specificUsernameAndPasswordEntered() {
+  const enteredUsername = document.getElementById("username").value;
+  const enteredPassword = document.getElementById("password").value;
+
+  // Check if the entered username is "Admin" (case insensitive) and the password is "2345"
+  return (
+    enteredUsername.toLowerCase() === "admin" && enteredPassword === "2345"
+  );
 }
 
-function togglePasswordVisibility() {
-  const passwordInput = document.getElementById("password");
-  const toggleSpan = document.querySelector(".toggle-password");
-
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    toggleSpan.textContent = "Hide";
-  } else {
-    passwordInput.type = "password";
-    toggleSpan.textContent = "Show";
-  }
+function redirectToFormPage() {
+  // Redirect to the form page
+  window.location.href = "form.html";
 }
 
-function lockoutUser() {
-  lockedOut = true;
-  displayError("Account locked. Please try again later.");
-  disableInputs();
-  startCountdown();
-  saveStateToLocalStorage();
+function displayErrorMessage(message) {
+  // Display error message logic (you can customize this based on your UI)
+  const errorMessageElement = document.getElementById("error-message");
+  errorMessageElement.textContent = message;
 }
-
-function disableInputs() {
-  document.getElementById("username").disabled = true;
-  document.getElementById("password").disabled = true;
-}
-
-function startCountdown() {
-  const countdownContainer = document.getElementById("countdown");
-  countdownContainer.innerHTML = `<div class='countdown'>${formatTime(
-    lockoutDuration
-  )}</div>`;
-
-  const countdownInterval = setInterval(() => {
-    lockoutDuration -= 1000;
-    countdownContainer.innerHTML = `<div class='countdown'>${formatTime(
-      lockoutDuration
-    )}</div>`;
-
-    if (lockoutDuration <= 0) {
-      clearInterval(countdownInterval);
-      countdownContainer.innerHTML = "";
-      unlockUser();
-    }
-  }, 1000);
-
-  saveStateToLocalStorage();
-}
-
-function formatTime(milliseconds) {
-  const seconds = Math.floor(milliseconds / 1000);
-  const minutes = Math.floor(seconds / 60);
-  return `${minutes}:${String(seconds % 60).padStart(2, "0")}`;
-}
-
-function unlockUser() {
-  lockedOut = false;
-  document.getElementById("username").disabled = false;
-  document.getElementById("password").disabled = false;
-  attempts = 3;
-  displayError("");
-  saveStateToLocalStorage();
-}
-
-function saveStateToLocalStorage() {
-  localStorage.setItem("lockedOut", lockedOut.toString());
-  localStorage.setItem("lockoutDuration", lockoutDuration.toString());
-  localStorage.setItem("attempts", attempts.toString());
-}
-
-function loadStateFromLocalStorage() {
-  lockedOut = localStorage.getItem("lockedOut") === "true";
-  lockoutDuration =
-    parseInt(localStorage.getItem("lockoutDuration")) || lockoutDuration;
-  attempts = parseInt(localStorage.getItem("attempts")) || attempts;
-
-  if (lockedOut) {
-    disableInputs();
-    startCountdown();
-  }
-}
-
-loadStateFromLocalStorage();
